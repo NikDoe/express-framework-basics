@@ -11,6 +11,11 @@ app.get('/', (request, response) => {
 	response.render('home');
 });
 
+app.get('/random', (request, response) => {
+	const num = Math.floor(Math.random() * 10) + 1;
+	response.render('random', { num });
+});
+
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);
 });

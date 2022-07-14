@@ -13,7 +13,8 @@ app.get('/', (request, response) => {
 
 app.get('/random', (request, response) => {
 	const num = Math.floor(Math.random() * 10) + 1;
-	response.render('random', { num });
+	const isOdd = num % 2 === 0 ? 'even' : 'odd';
+	response.render('random', { num, isOdd });
 });
 
 app.get('/r/:animals', (request, response) => {

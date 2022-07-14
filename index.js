@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const subredditData = require('./data.json');
 
 const app = express();
 const port = 9000;
@@ -17,11 +18,15 @@ app.get('/random', (request, response) => {
 	response.render('random', { num, isOdd });
 });
 
-app.get('/r/:animals', (request, response) => {
-	const { animals } = request.params;
+app.get('/r/:subreddit', (request, response) => {
+	const { subreddit } = request.params;
 	const allCats = ['blue', 'monty', 'rocket', 'winston'];
-
-	response.render('animals', { animals, allCats });
+	const data = subredditData[subreddit];
+	if (data) {
+		response.render('subreddit', { ...data, allCats });
+	} else {
+		response.render('404', { subreddit });
+	}
 });
 
 app.listen(port, () => {

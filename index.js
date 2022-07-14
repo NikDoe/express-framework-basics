@@ -19,7 +19,9 @@ app.get('/random', (request, response) => {
 
 app.get('/r/:animals', (request, response) => {
 	const { animals } = request.params;
-	response.render('animals', { animals });
+	const allCats = ['blue', 'monty', 'rocket', 'winston'];
+
+	response.render('animals', { animals, allCats });
 });
 
 app.listen(port, () => {

@@ -8,15 +8,17 @@ const port = 9000;
 // });
 
 app.get('/', (request, response) => {
-	response.send('home page');
+	response.send('this is home page');
 });
 
-app.get('/cats', (request, response) => {
-	response.send('🐱‍👤cats page');
+app.get('/:animals', (request, response) => {
+	const { animals } = request.params;
+	response.send(`this is ${animals} page`);
 });
 
-app.get('/dogs', (request, response) => {
-	response.send('🐶dogs page');
+app.get('/:animals/:photoId', (request, response) => {
+	const { animals, photoId } = request.params;
+	response.send(`this is photo ${photoId} on ${animals} page`);
 });
 
 app.post('/dogs', (request, response) => {

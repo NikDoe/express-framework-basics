@@ -11,13 +11,13 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
 app.get('/', (request, response) => {
-	response.render('home');
+	response.render('home', { name: 'homepage' });
 });
 
 app.get('/random', (request, response) => {
 	const num = Math.floor(Math.random() * 10) + 1;
 	const isOdd = num % 2 === 0 ? 'even' : 'odd';
-	response.render('random', { num, isOdd });
+	response.render('random', { name: 'random', num, isOdd });
 });
 
 app.get('/r/:subreddit', (request, response) => {

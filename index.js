@@ -16,6 +16,11 @@ app.get('/random', (request, response) => {
 	response.render('random', { num });
 });
 
+app.get('/r/:animals', (request, response) => {
+	const { animals } = request.params;
+	response.render('animals', { animals });
+});
+
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);
 });
